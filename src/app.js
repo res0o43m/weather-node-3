@@ -19,6 +19,7 @@ const options = {
 }
 
 const app = express()
+const port = process.env.PORT || 3000
 
 // Setup HandleBars and view path
 app.set('view engine', 'hbs')
@@ -113,6 +114,6 @@ app.get('*', (req, res) => {
 
 
 // Start up the server
-app.listen(3000, () => {
-    console.log('Server is up on port 3000')
+app.listen(port, () => {
+    console.log('Server is up on port ' + port)
 })
