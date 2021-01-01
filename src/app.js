@@ -37,7 +37,7 @@ app.get('', (req, res) => {
 
 app.get('/about', (req, res) => {
     res.render('about', {
-        title: 'About Robot',
+        title: 'About Weather',
         name: 'Dan Watters'
     })
 })
@@ -46,7 +46,7 @@ app.get('/help', (req, res) => {
     res.render('help', {
         title: 'Help',
         name: 'Dan Watters',
-        msg: 'Some smart help information goes here'
+        msg: 'Not much to say, just enter anything that would identify a location. \n It could be a zip code, city, full address, partial location name'
     })
 })
 
