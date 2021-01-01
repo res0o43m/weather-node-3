@@ -53,7 +53,7 @@ app.get('/help', (req, res) => {
 app.get('/weather', (req, res) => {
     if (!req.query.address) {
         return res.send({
-            error: 'You must provide an address'
+            error: 'You must provide an address or location'
         })
     }
 
@@ -61,14 +61,17 @@ app.get('/weather', (req, res) => {
         if (error) {
             return res.send({ error })
         }
-        forecast(latitude, longitude, (error, { forecast } = {}) => {
+        forecast(latitude, longitude, (error, { forecast,icon } = {}) => {
             if (error) {
                 return res.send({ error })
             }
+            const weatherIcon = req.query.icon
+            console.log(weatherIcon)
             res.send({
                 address: req.query.address,
                 location: Location,
-                forecast
+                forecast,
+                icon
             })
             // console.log(Location)
             // console.log(forecast)

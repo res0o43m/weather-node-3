@@ -1,15 +1,17 @@
 // const { response } = require("express")
 
-console.log('Client side js file loaded')
+//console.log('Client side js file loaded')
 
 
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2')
+const imageOne = document.querySelector('#image-1')
 
 messageOne.textContent = ''
 messageTwo.textContent = ''
+imageOne.src = ''
 
 weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -25,14 +27,16 @@ weatherForm.addEventListener('submit', (e) => {
     fetch('/weather?address='+ encodeURIComponent(location))
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            
             if (data.error) {
                 messageOne.textContent = data.error
                 messageTwo.textContent = ''
+                imageOne.src = ''
             //    console.log(data.error)
             } else {
                 messageOne.textContent = data.location
                 messageTwo.textContent = data.forecast
+                imageOne.src = data.icon
             //    console.log(data.location)
             //    console.log(data.forecast)
             }
